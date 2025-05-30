@@ -6,10 +6,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.anderson.proyectocompraventa.controllers.models.Usuario;
-import org.anderson.proyectocompraventa.controllers.services.LoginService;
-import org.anderson.proyectocompraventa.controllers.services.LoginServiceSessionImplement;
-import org.anderson.proyectocompraventa.controllers.services.UsuarioService;
-import org.anderson.proyectocompraventa.controllers.services.UsuarioServiceJdbcImplement;
 import org.anderson.proyectocompraventa.controllers.services.*;
 
 import java.io.IOException;
@@ -46,18 +42,21 @@ public class UsuarioServlet extends HttpServlet {
         Connection conn = (Connection) req.getAttribute("conn");
         UsuarioService servicio = new UsuarioServiceJdbcImplement(conn);
 
-        String nombre = req.getParameter("nombre");
-        String correo = req.getParameter("correo");
-        String clave = req.getParameter("clave");
-
-        Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuario.setCorreo(correo);
-        usuario.setClave(clave);
-        usuario.setEstado(1); // activo
+        Usuario u = new Usuario();
+        u.setNombre(req.getParameter("nombre"));
+        u.setTipoDocumento(req.getParameter("tipo_documento"));
+        u.setNumDocumento(req.getParameter("num_documento"));
+        u.setDireccion(req.getParameter("direccion"));
+        u.setTelefono(req.getParameter("telefono"));
+        u.setEmail(req.getParameter("email"));
+        u.setCargo(req.getParameter("cargo"));
+        u.setLogin(req.getParameter("login"));
+        u.setClave(req.getParameter("clave"));
+        u.setImagen(req.getParameter("imagen")); // si es subida por multipart, debes ajustar esto
+        u.setCondicion(Integer.parseInt(req.getParameter("condicion")));
 
         try {
-            servicio.guardar(usuario);
+            servicio.guardar(u);
         } catch (Exception e) {
             e.printStackTrace();
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al guardar el usuario");
