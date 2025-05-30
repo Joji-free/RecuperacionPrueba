@@ -1,4 +1,4 @@
-package org.elvis.proyectocompraventa.controllers.models;
+package org.anderson.proyectocompraventa.controllers.models;
 
 public class Categoria {
     private Long idCategoria;

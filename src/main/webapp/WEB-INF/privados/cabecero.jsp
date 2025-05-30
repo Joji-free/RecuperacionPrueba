@@ -73,7 +73,7 @@
                                      alt="User Image">
                                 <p>
 
-                                    <small>Elvis Pachacama</small>
+                                    <small>Anderson Soto </small>
                                 </p>
                             </li>
 
@@ -118,8 +118,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
+                        <li><a href="/proyectocompraventa/articulo"><i class="fa fa-circle-o"></i> Articulos</a></li>
                         <li><a href="/proyectocompraventa/categoria"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                        <li><a href="/proyectocompraventa/usuario"><i class="fa fa-circle-o"></i> Usuario</a></li>
                     </ul>
                 </li>
                 <li>

@@ -1,4 +1,4 @@
-package org.elvis.proyectocompraventa.controllers.controllers;
+package org.anderson.proyectocompraventa.controllers.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -7,13 +7,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.elvis.proyectocompraventa.controllers.models.Categoria;
-import org.elvis.proyectocompraventa.controllers.services.*;
+import org.anderson.proyectocompraventa.controllers.models.Categoria;
+import org.anderson.proyectocompraventa.controllers.services.CategoriaService;
+import org.anderson.proyectocompraventa.controllers.services.CategoriaServiceJdbcImplement;
+import org.anderson.proyectocompraventa.controllers.services.LoginService;
+import org.anderson.proyectocompraventa.controllers.services.LoginServiceSessionImplement;
+import org.anderson.proyectocompraventa.controllers.services.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 

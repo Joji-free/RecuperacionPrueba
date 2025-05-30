@@ -1,11 +1,11 @@
-package org.elvis.proyectocompraventa.controllers.util;
+package org.anderson.proyectocompraventa.controllers.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBDD {
-    private static String url="jdbc:mysql://localhost:3306/compraventa?serverTimezone=UTC";
+    private static String url="jdbc:mysql://localhost:3306/trabajoenclase?serverTimezone=UTC";
     private static String username="root";
     private static String password="";
 

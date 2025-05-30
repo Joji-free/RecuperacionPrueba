@@ -1,7 +1,7 @@
-package org.elvis.proyectocompraventa.controllers.services;
+package org.anderson.proyectocompraventa.controllers.services;
 
-import org.elvis.proyectocompraventa.controllers.models.Categoria;
-import org.elvis.proyectocompraventa.controllers.repositories.CategoriaRepositoryJdbcImpl;
+import org.anderson.proyectocompraventa.controllers.models.Categoria;
+import org.anderson.proyectocompraventa.controllers.repositories.CategoriaRepositoryJdbcImpl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,4 +31,13 @@ public class CategoriaServiceJdbcImplement implements CategoriaService {
             throw new ServiceJdcException(throwables.getMessage(), throwables.getCause());
         }
     }
+    @Override
+    public void guardar(Categoria categoria) {
+        try {
+            repositoryJdbc.guardar(categoria);
+        } catch (SQLException throwables) {
+            throw new ServiceJdcException(throwables.getMessage(), throwables.getCause());
+        }
+    }
+
 }

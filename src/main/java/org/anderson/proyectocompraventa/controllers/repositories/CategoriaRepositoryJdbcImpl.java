@@ -1,6 +1,6 @@
-package org.elvis.proyectocompraventa.controllers.repositories;
+package org.anderson.proyectocompraventa.controllers.repositories;
 
-import org.elvis.proyectocompraventa.controllers.models.Categoria;
+import org.anderson.proyectocompraventa.controllers.models.Categoria;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -46,23 +46,32 @@ public class CategoriaRepositoryJdbcImpl implements Repository<Categoria> {
        return categoria;
     }
 
+
     @Override
     public void guardar(Categoria categoria) throws SQLException {
         String sql;
-        if(categoria.getIdCategoria() != null && categoria.getIdCategoria() > 0){
-            sql="update categoria set nombre=?, descripcion=? Where idCategoria=?";
-        }
-        else{
-            sql="insert into categoria (nombre, descripcion, estado)VALUES(?,?,1)";
-        }
-        try(PreparedStatement stmt=conn.prepareStatement(sql)){
-            stmt.setString(1,categoria.getNombre());
-            stmt.setString(2,categoria.getDescripcion());
-            stmt.setInt(3,categoria.getCondicion());
-            stmt.executeUpdate();
+        boolean esActualizar = categoria.getIdCategoria() != null && categoria.getIdCategoria() > 0;
+
+        if (esActualizar) {
+            sql = "UPDATE categoria SET nombre = ?, descripcion = ?, condicion = ? WHERE idCategoria = ?";
+        } else {
+            sql = "INSERT INTO categoria (nombre, descripcion, condicion) VALUES (?, ?, ?)";
         }
 
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, categoria.getNombre());
+            stmt.setString(2, categoria.getDescripcion());
+            stmt.setInt(3, categoria.getCondicion());
+
+            if (esActualizar) {
+                stmt.setLong(4, categoria.getIdCategoria());
+            }
+
+            stmt.executeUpdate();
+        }
     }
+
+
 
     @Override
     public void eliminar(Long id) throws SQLException {
